@@ -1,0 +1,14 @@
+import express from "express";
+import { test, updateUser, deleteUser, getUserListing, getUser, getUserVehicle, getUserPet, getUserSecondHand } from "../controllers/user.controller.js";
+import { verifyUser } from "../utils/verifyUser.js";
+
+const router = express.Router();
+router.get('/test',test);
+router.post('/update/:id', verifyUser, updateUser);
+router.delete('/delete/:id', verifyUser, deleteUser);
+router.get('/listings/:id', verifyUser, getUserListing);
+router.get('/vehicles/:id', verifyUser, getUserVehicle);
+router.get('/pets/:id', verifyUser, getUserPet);
+router.get('/secondhands/:id', verifyUser, getUserSecondHand);
+router.get('/:id', verifyUser, getUser);
+export default router;
